@@ -1,11 +1,23 @@
-import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
+import {
+  Route,
+  Routes,
+  BrowserRouter as Router,
+  Navigate,
+} from "react-router-dom";
 import Login from "./pages/Auth/Login";
+import Home from "./pages/Comum/Home";
+
+const HomeRoute = () => {
+  const token = localStorage.getItem("token");
+  return token ? <Home /> : <Navigate to="/" replace />;
+};
 
 const AppRoutes = () => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/home" element={<HomeRoute />} />
 
         <Route
           path="*"

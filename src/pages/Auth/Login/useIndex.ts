@@ -8,7 +8,9 @@ export const useIndex = () => {
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
     if (email === "spotmkt" && password === "123") {
+      localStorage.setItem("token", "token");
       navigate("/home");
+      console.log("Login");
     } else {
       alert("E-mail ou senha incorretos");
       e.currentTarget.reset();
